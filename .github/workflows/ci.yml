@@ -24,3 +24,12 @@ jobs:
 
     - name: Push Docker image
       run: docker push ghcr.io/sertacengin/web-app:latest
+    
+    - name: Deploy to Kubernetes
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: root
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          kubectl rollout restart deployment web
