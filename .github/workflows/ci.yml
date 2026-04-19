@@ -1,37 +1,32 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write   # WICHTIG für GHCR
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
     - name: Login to GHCR
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
 
     - name: Build Docker image
-      run: docker build -t ghcr.io/sertacengin/web-app:latest .
+      run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/web-app:latest .
 
     - name: Push Docker image
-      run: docker push ghcr.io/sertacengin/web-app:latest
-    
-    - name: Deploy to Kubernetes
+      run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/web-app:latest
+
+    - name: Deploy to Kubernetes via SSH
       uses: appleboy/ssh-action@v1.0.3
-      env:
-        HCLOUD_TOKEN: ${{ secrets.HETZNER_TOKEN }}
       with:
-        host: ${{ secrets.SERVER_IP }}
-        username: root
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
+          kubectl apply -f web.yaml
           kubectl rollout restart deployment web
