@@ -27,6 +27,8 @@ jobs:
     
     - name: Deploy to Kubernetes
       uses: appleboy/ssh-action@v1.0.3
+      env:
+        HCLOUD_TOKEN: ${{ secrets.HETZNER_TOKEN }}
       with:
         host: ${{ secrets.SERVER_IP }}
         username: root

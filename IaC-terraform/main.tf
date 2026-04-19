@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     hcloud = {
-      source = "hetznercloud/hcloud"
+      source  = "hetznercloud/hcloud"
       version = "~> 1.45"
     }
   }
@@ -18,7 +18,7 @@ variable "hcloud_token" {
 
 resource "hcloud_ssh_key" "default" {
   name       = "my-ssh-key"
-  public_key = file("hetzner_key.pub")
+  public_key = file("C:/Users/serta/.ssh/hetzner_key.pub")
 }
 
 resource "hcloud_network" "k8s_network" {
@@ -56,7 +56,7 @@ resource "hcloud_server" "worker" {
 
   network {
     network_id = hcloud_network.k8s_network.id
-    ip = "10.0.1.11"
+    ip         = "10.0.1.11"
   }
 }
 
@@ -71,10 +71,10 @@ output "worker_ip" {
 output "ansible_inventory" {
   value = <<EOT
 [k8s_master]
-master ansible_host=${hcloud_server.master.ipv4_address} ansible_user=root ansible_ssh_private_key_file=~/.ssh/hetzner_key
+master ansible_host=${hcloud_server.master.ipv4_address} ansible_user=root ansible_ssh_private_key_file=C:/Users/serta/.ssh/.ssh/hetzner_key
 
 [k8s_worker]
-worker ansible_host=${hcloud_server.worker.ipv4_address} ansible_user=root ansible_ssh_private_key_file=~/.ssh/hetzner_key
+worker ansible_host=${hcloud_server.worker.ipv4_address} ansible_user=root ansible_ssh_private_key_file=C:/Users/serta/.ssh/.ssh/hetzner_key
 
 [k8s_cluster:children]
 k8s_master
