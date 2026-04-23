@@ -18,7 +18,8 @@ variable "hcloud_token" {
 
 resource "hcloud_ssh_key" "default" {
   name       = "my-ssh-key"
-  public_key = file("C:/Users/serta/.ssh/hetzner_key.pub")
+  # trimspace ekleyerek Windows/Linux arası görünmez karakter farklarını siliyoruz
+  public_key = trimspace(file("~/.ssh/hetzner_key.pub"))
 }
 
 resource "hcloud_network" "k8s_network" {
@@ -32,10 +33,11 @@ resource "hcloud_network_subnet" "k8s_subnet" {
   network_zone = "eu-central"
   ip_range     = "10.0.1.0/24"
 }
+
 resource "hcloud_server" "master" {
   name        = "k8s-master"
   image       = "ubuntu-22.04"
-  server_type = "cx23"
+  server_type = "cx23" # Hetzner'in yeni Intel/AMD serisi (cx21 yerine cx23 iyi tercih)
   location    = "nbg1"
 
   ssh_keys = [hcloud_ssh_key.default.id]
@@ -44,6 +46,9 @@ resource "hcloud_server" "master" {
     network_id = hcloud_network.k8s_network.id
     ip         = "10.0.1.10"
   }
+
+  # Bağımlılık ekleyerek network hazır olmadan server kurulmasını engelleriz
+  depends_on = [hcloud_network_subnet.k8s_subnet]
 }
 
 resource "hcloud_server" "worker" {
@@ -58,6 +63,8 @@ resource "hcloud_server" "worker" {
     network_id = hcloud_network.k8s_network.id
     ip         = "10.0.1.11"
   }
+
+  depends_on = [hcloud_network_subnet.k8s_subnet]
 }
 
 output "master_ip" {
@@ -71,10 +78,10 @@ output "worker_ip" {
 output "ansible_inventory" {
   value = <<EOT
 [k8s_master]
-master ansible_host=${hcloud_server.master.ipv4_address} ansible_user=root ansible_ssh_private_key_file=C:/Users/serta/.ssh/.ssh/hetzner_key
+master ansible_host=${hcloud_server.master.ipv4_address} ansible_user=root ansible_ssh_private_key_file=~/.ssh/hetzner_key
 
 [k8s_worker]
-worker ansible_host=${hcloud_server.worker.ipv4_address} ansible_user=root ansible_ssh_private_key_file=C:/Users/serta/.ssh/.ssh/hetzner_key
+worker ansible_host=${hcloud_server.worker.ipv4_address} ansible_user=root ansible_ssh_private_key_file=~/.ssh/hetzner_key
 
 [k8s_cluster:children]
 k8s_master
