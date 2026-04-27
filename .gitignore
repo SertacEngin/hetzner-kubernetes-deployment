@@ -1,0 +1,58 @@
+# =========================
+# Terraform
+# =========================
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+terraform.tfvars.json
+
+# Plan files
+tfplan
+*.tfplan
+
+# =========================
+# Kubernetes / K8s
+# =========================
+*.kubeconfig
+.kube/
+
+# =========================
+# SSH Keys (sehr wichtig)
+# =========================
+*.pem
+*.key
+*.pub
+id_rsa
+id_rsa.pub
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+.vscode/
+.idea/
+
+# =========================
+# Node / optional (falls Web UI)
+# =========================
+node_modules/
+
+# =========================
+# Secrets
+# =========================
+.env
+.env.*
+secrets.yaml
