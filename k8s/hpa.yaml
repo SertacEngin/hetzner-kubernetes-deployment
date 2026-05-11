@@ -9,6 +9,7 @@ spec:
     name: web
   minReplicas: 1
   maxReplicas: 5
+
   metrics:
   - type: Resource
     resource:
