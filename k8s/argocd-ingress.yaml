@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: argocd-ingress
   namespace: argocd
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
+  ingressClassName: traefik
   rules:
   - host: argocd.local
     http:
@@ -16,4 +15,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 443
+              number: 80  # Artık 443 değil, düz 80 portu!
