@@ -2,13 +2,13 @@
 
 ## Overview
 
-This project demonstrates a complete cloud-native GitOps platform built on Kubernetes, including Infrastructure as Code, CI/CD automation, and full observability stack.
+This project demonstrates a complete cloud-native GitOps platform built on Kubernetes, including Infrastructure as Code, CI/CD automation, and the monitoring stack.
 
 The system provisions infrastructure automatically, deploys applications via GitOps principles, and provides monitoring and autoscaling capabilities.
 
 ---
 
-## 🧠 Architecture
+## Architecture
 
 The platform is fully automated and follows a GitOps workflow:
 
