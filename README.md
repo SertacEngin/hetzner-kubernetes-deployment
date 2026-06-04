@@ -4,7 +4,7 @@
 
 This project demonstrates a complete cloud-native GitOps platform built on Kubernetes, including Infrastructure as Code, CI/CD automation, and the monitoring stack.
 
-The system provisions infrastructure automatically, deploys applications via GitOps principles, and provides monitoring and autoscaling capabilities.
+The system automatically provisions infrastructure, deploys containerized applications using a GitOps workflow, and provides observability and autoscaling capabilities. It is designed to simulate a production-like environment with fully automated deployment and operations processes.
 
 ---
 
@@ -32,52 +32,59 @@ Tools:
 
 ---
 
-## ☸️ Kubernetes Cluster
+## Kubernetes Cluster
 
-A lightweight Kubernetes cluster is deployed using **k3s**.
+A lightweight Kubernetes cluster is deployed using **k3s** to simulate a production-like, distributed environment.
+
+The cluster is designed to run containerized workloads with basic production features such as scaling, routing, and service discovery.
 
 Key components:
 
 * Multi-node cluster (master + worker)
-* NGINX-based application deployment
-* Kubernetes Services (ClusterIP)
-* Ingress via Traefik
-* Horizontal Pod Autoscaling (HPA)
+* Containerized NGINX application workloads
+* Kubernetes Services (ClusterIP) for internal communication
+* Ingress routing via Traefik for external access
+* Horizontal Pod Autoscaling (HPA) based on CPU utilization
 
 ---
 
-## 🚀 CI/CD Pipeline (GitHub Actions)
+## CI/CD Pipeline (GitHub Actions)
 
-A fully automated CI/CD pipeline is implemented:
+A fully automated CI/CD pipeline is implemented using GitHub Actions and GitOps principles.
 
 ### Pipeline flow:
 
-1. Code is pushed to `main`
-2. Docker image is built
-3. Image is pushed to GitHub Container Registry (GHCR)
-4. Kubernetes manifest is automatically updated
-5. Git commit triggers Argo CD sync
+1. Code changes are pushed to `main` branch
+2. A Docker image is built and versioned automatically
+3. The image is pushed to GitHub Container Registry (GHCR)
+4. Kubernetes manifests are updated with the new image tag
+5. The Git commit triggers Argo CD to automatically sync and deploy the changes to the cluster
 
-### Features:
+### Key Features:
 
-* Automatic image versioning
-* Git-based deployment updates
-* Zero manual deployment steps
-
----
-
-## 🔄 GitOps (Argo CD)
-
-Argo CD is used for continuous reconciliation:
-
-* Monitors Git repository
-* Automatically syncs Kubernetes state
-* Ensures declarative infrastructure consistency
-* Supports self-healing (prune + self-heal enabled)
+* Automated image versioning based on pipeline runs
+* Git-based deployment workflow (GitOps approach)
+* Fully automated deployment process with no manual intervention
+* Continuous synchronization between Git repository and Kubernetes cluster
 
 ---
 
-## 📦 Application Layer
+## GitOps (Argo CD)
+
+Argo CD is used to implement a GitOps-based deployment model with continuous synchronization between the Git repository and the Kubernetes cluster.
+
+It continuously monitors the repository and ensures that the live cluster state always matches the desired state defined in Git.
+
+### Key Responsibilies
+
+* Continuous monitoring of the Git repository for changes
+* Automatic synchronization of Kubernetes resources
+* Enforcement of declarative infrastructure as the single source of truth
+* Self-healing capabilities through automated drift detection and correction (prune & self-heal enabled)
+
+---
+
+## Application Layer
 
 Simple NGINX-based application:
 
@@ -93,7 +100,7 @@ Features:
 
 ---
 
-## 📊 Observability Stack
+## Observability Stack
 
 Monitoring is implemented using:
 
@@ -107,7 +114,7 @@ Deployed via Helm chart:
 
 ---
 
-## 🌐 Networking & Access
+## Networking & Access
 
 * Traefik Ingress Controller
 
@@ -123,7 +130,7 @@ Deployed via Helm chart:
 
 ---
 
-## 📈 Autoscaling
+## Autoscaling
 
 Horizontal Pod Autoscaler (HPA):
 
@@ -136,21 +143,20 @@ Horizontal Pod Autoscaler (HPA):
 
 ## 🛠️ Tools & Technologies
 
+* Linux (Ubuntu)
 * Kubernetes (k3s)
 * Docker
 * Terraform
-* Ansible (inventory generation)
 * GitHub Actions (CI/CD)
 * Argo CD (GitOps)
 * Helm
 * Prometheus
 * Grafana
 * Traefik Ingress
-* Linux (Ubuntu)
 
 ---
 
-## 🔥 Key Engineering Concepts Demonstrated
+## Key Engineering Concepts Demonstrated
 
 * Infrastructure as Code (IaC)
 * GitOps deployment model
@@ -164,7 +170,7 @@ Horizontal Pod Autoscaler (HPA):
 
 ---
 
-## 🚨 Troubleshooting / Lessons Learned
+## Troubleshooting / Lessons Learned
 
 During implementation, several real-world issues were solved:
 
@@ -178,7 +184,7 @@ A temporary workaround was implemented for Argo CD access using NodePort to ensu
 
 ---
 
-## 📌 Deployment Summary
+## Deployment Summary
 
 * Terraform provisions infrastructure
 * k3s initializes Kubernetes cluster
@@ -189,7 +195,7 @@ A temporary workaround was implemented for Argo CD access using NodePort to ensu
 
 ---
 
-## 🎯 Purpose of this Project
+## Purpose of this Project
 
 This project was built to gain hands-on experience with:
 
@@ -202,7 +208,7 @@ This project was built to gain hands-on experience with:
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 * Full TLS (cert-manager + Let’s Encrypt)
 * Helm-based application packaging
