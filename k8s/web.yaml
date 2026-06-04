@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ghcr.io/sertacengin/web-app:1.0.21
+        image: ghcr.io/sertacengin/web-app:1.0.22
         imagePullPolicy: Always
 
         ports:
