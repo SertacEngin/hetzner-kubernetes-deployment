@@ -203,7 +203,7 @@ This project was built to gain hands-on experience with:
 * Infrastructure automation
 * CI/CD pipelines
 * GitOps workflows
-* Observability systems
+* Monitoring and Observability systems
 * Real-world system troubleshooting
 
 ---
