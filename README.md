@@ -141,7 +141,7 @@ Horizontal Pod Autoscaler (HPA):
 
 ---
 
-## 🛠️ Tools & Technologies
+## Tools & Technologies
 
 * Linux (Ubuntu)
 * Kubernetes (k3s)
@@ -189,8 +189,8 @@ A temporary workaround was implemented for Argo CD access using NodePort to ensu
 * Terraform provisions infrastructure
 * k3s initializes Kubernetes cluster
 * kubectl deploys workloads
-* Argo CD manages GitOps synchronization
 * GitHub Actions builds and updates images
+* Argo CD manages GitOps synchronization
 * Prometheus + Grafana provide observability
 
 ---
