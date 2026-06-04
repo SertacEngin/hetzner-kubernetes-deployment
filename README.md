@@ -12,21 +12,17 @@ The system provisions infrastructure automatically, deploys applications via Git
 
 The platform is fully automated and follows a GitOps workflow:
 
-GitHub → GitHub Actions → GHCR → Argo CD → Kubernetes Cluster → Ingress → Services → Pods
-↓
-Prometheus + Grafana
+GitHub → GitHub Actions → GHCR → Argo CD → Kubernetes Cluster → Ingress → Services → Pods → Prometheus + Grafana
 
 ---
 
-## ⚙️ Infrastructure (IaC)
+## Infrastructure (IaC)
 
-The infrastructure is provisioned using **Terraform on Hetzner Cloud**:
+The infrastructure is provisioned using **Terraform on Hetzner Cloud** and fully automated as Infrastructure as Code.
 
-* Kubernetes Master + Worker nodes (Ubuntu 22.04)
-* Private networking (10.0.0.0/16)
-* SSH key-based access
-* Automated Ansible inventory output
-* Cloud network segmentation
+It sets up a small Kubernetes environment consisting of master and worker nodes (Ubuntu 22.04), connected through a private network (10.0.0.0/16). Access is secured via SSH key-based authentication.
+
+The setup is designed to be reproducible and allows consistent provisioning of the entire infrastructure from scratch.
 
 Tools:
 
