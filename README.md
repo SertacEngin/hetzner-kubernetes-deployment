@@ -1,6 +1,6 @@
-#GitOps Kubernetes Platform (CI/CD + IaC + Observability)
+# GitOps Kubernetes Platform (CI/CD + IaC + Observability)
 
-##Overview
+## Overview
 
 This project demonstrates a complete cloud-native GitOps platform built on Kubernetes, including Infrastructure as Code, CI/CD automation, and full observability stack.
 
