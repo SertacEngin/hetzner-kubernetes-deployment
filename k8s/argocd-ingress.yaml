@@ -15,4 +15,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 80  # Artık 443 değil, düz 80 portu!
+              number: 80

@@ -1,5 +1,88 @@
-<h1>Hello Kubernetes CI/CD 🚀</h1>
-<p>Deployed via GitHub Actions</p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSchool Connect - Digitales Schulportal</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
 
-Kubernetes pulls this automatically...
-12.05.2026
+    <nav class="bg-indigo-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/10 p-2 rounded-lg"><i data-lucide="school" class="w-6 h-6"></i></div>
+                <span class="text-xl font-bold tracking-tight">EduSchool Connect</span>
+            </div>
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <span class="bg-indigo-700 px-3 py-1 rounded-full text-indigo-200">Klasse 10A</span>
+                <span class="text-indigo-100">Guten Tag, Familie Schmidt</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <div class="lg:col-span-2 space-y-6">
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold">Digitales Klassenbuch</h2>
+                    <p class="text-emerald-50/90 text-sm mt-1">Hier finden Sie alle aktuellen Hausaufgaben, Noten und Termine Ihres Kindes.</p>
+                </div>
+                <i data-lucide="book-open" class="w-12 h-12 text-emerald-200/50 hidden sm:block"></i>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div class="flex justify-between items-center text-amber-600"><h3 class="font-bold flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> Hausaufgaben</h3><span class="text-xs bg-amber-50 px-2 py-0.5 rounded-full font-semibold">2 offen</span></div>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>• <strong class="text-slate-900">Mathematik:</strong> S. 45 Aufg. 1-4 (bis morgen)</li>
+                        <li>• <strong class="text-slate-900">Englisch:</strong> Vokabeln Unit 4 (bis Freitag)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div class="flex justify-between items-center text-indigo-600"><h3 class="font-bold flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> Klassenarbeiten</h3><span class="text-xs bg-indigo-50 px-2 py-0.5 rounded-full font-semibold">Nächste Woche</span></div>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>• <strong class="text-slate-900">Physik:</strong> Mechanik & Energie (Dienstag)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+                <div class="p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                    <h3 class="font-bold text-slate-800">Letzte Leistungsnachweise</h3>
+                </div>
+                <div class="divide-y divide-slate-100 text-sm">
+                    <div class="p-4 flex justify-between items-center hover:bg-slate-50/50 transition">
+                        <div><p class="font-semibold text-slate-900">Deutsch – Klausur Nr. 2</p><p class="text-xs text-slate-500">18.06.2026</p></div>
+                        <span class="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-xl text-xs">Note: 2+</span>
+                    </div>
+                    <div class="p-4 flex justify-between items-center hover:bg-slate-50/50 transition">
+                        <div><p class="font-semibold text-slate-900">Geschichte – Epochenquiz</p><p class="text-xs text-slate-500">12.06.2026</p></div>
+                        <span class="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-xl text-xs">Note: 1-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs space-y-4">
+                <h3 class="font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
+                    <i data-lucide="megaphone" class="w-5 h-5 text-indigo-500"></i>
+                    <span>Elternbriefe & Infos</span>
+                </h3>
+                <div class="space-y-4 text-sm">
+                    <div class="bg-slate-50 p-3 rounded-xl border-l-4 border-indigo-500">
+                        <p class="text-xs text-slate-400 font-medium">25.06.2026</p>
+                        <h4 class="font-semibold text-slate-900 mt-0.5">Information zum Wandertag</h4>
+                        <p class="text-xs text-slate-600 mt-1">Bitte denken Sie daran, Ihrem Kind am kommenden Donnerstag wetterfeste Kleidung mitzugeben.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
